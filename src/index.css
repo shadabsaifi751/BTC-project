@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark-bg: #0b0e14;
+  --color-dark-card: #151a23;
+  --color-dark-border: #232b36;
+  --color-dark-text: #c0c6d4;
+  --color-dark-heading: #ffffff;
+
+  --color-light-bg: #f3f5f8;
+  --color-light-card: #ffffff;
+  --color-light-border: #e2e8f0;
+  --color-light-text: #475569;
+  --color-light-heading: #0f172a;
+
+  --color-up: #10b981;
+  --color-down: #ef4444;
+}
+
+@layer base {
+  body {
+    @apply bg-light-bg text-light-text transition-colors duration-300 antialiased font-sans;
+  }
+
+  html.dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+}
+
+@keyframes flash-green {
+  0% {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+    color: #10b981;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes flash-red {
+  0% {
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+    color: #ef4444;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+.flash-up {
+  animation: flash-green 1s ease-out;
+}
+
+.flash-down {
+  animation: flash-red 1s ease-out;
+}
+
+.glass-effect {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.dark .glass-effect {
+  @apply bg-dark-card/70 backdrop-blur-md border border-white/5 shadow-2xl;
+}
